@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
 
-    <title>合成大广财(非官方)</title>
-	<link rel="shortcut icon" href="/favicon.ico">
-
+    <title>合成大广财</title>
+	<link rel="shortcut icon" href="favicon.ico">
     <!--http://www.html5rocks.com/en/mobile/mobifying/-->
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1" />
 
@@ -65,6 +64,9 @@
     </script> -->
 
     <link rel="stylesheet" type="text/css" href="style-mobile.css" />
+    <script src="layer/jquery.min.js"></script>
+    <script src="layer/layer.min.js"></script>
+    <link href="layer/layer.css" rel="stylesheet">
 	<script>
 var _hmt = _hmt || [];
 (function() {
@@ -74,7 +76,6 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-
 </head>
 
 <body style="margin: 0; background: #ddd;" align="center">
@@ -110,7 +111,7 @@ var _hmt = _hmt || [];
         <!-- if (typeof(killads)=='undefined'){ -->
         <!-- alert('广告被过滤'); -->
         <!-- } -->
-    </script> 
+    <!-- </script>  -->
 -->
 
 
@@ -137,23 +138,76 @@ var _hmt = _hmt || [];
             //        console.log("window.navigator.language",window.navigator.language);
 
             if (window.navigator.language == "zh-CN" || window.navigator.language == "zh-cn") {
-                document.title = "合成大广财v0.1(非官方)";
+                document.title = "合成大广财v2.0(非官方)";
             } else if (window.navigator.language == "zh-TW") {
-                document.title = "合成大廣財v0.1(非官方)";
+                document.title = "合成大廣財v2.0(非官方)";
             } else if (window.navigator.language == "zh-HK") {
-                document.title = "合成大廣財v0.1(非官方)";
+                document.title = "合成大廣財v2.0(非官方)";
             } else if (window.navigator.language == "ko-KR") {
-                document.title = "큰 수박 을 합성 하 다v0.1(非官方)";
+                document.title = "큰 수박 을 합성 하 다v2.0(非官方)";
             } else if (window.navigator.language == "ja-JP") {
-                document.title = "合成GDUFE v0.1(非官方)";
+                document.title = "合成GDUFE v2.0(非官方)";
             } else if (window.navigator.language == "th-TH") {
-                document.title = "แตงโมสังเคราะห์ v0.1(非官方)";
+                document.title = "แตงโมสังเคราะห์ v2.0(非官方)";
             } else {
-                document.title = "Synthetic GDUFE v0.1(Unofficial)";
+                document.title = "Synthetic GDUFE v2.0(Unofficial)";
             }
 
 
         }
+
+        if(true){
+            window.difficulty = [0, 5];
+            multiplescore = 1;
+            function changeDifficulty(ele, diff) {
+              $('[name=difficulty]').css('background-color', '');
+              $(ele).css('background-color', '#1E9FFF');
+              window.difficulty = diff;
+            }
+            
+            function multipleScore(ele, diff) {
+              $('[name=fanbei]').css('background-color', '');
+              $(ele).css('background-color', '#1E9FFF');
+              multiplescore = diff;
+            }
+
+        }
+
+    layer.open({
+      type: 1
+      , title: false //不显示标题栏
+      , closeBtn: false
+      , area: '300px;'
+      , shade: 0.8
+      , id: 'layer2' //设定一个id，防止重复弹出
+      , resize: false
+      , btn: ['开始游戏']
+      , btnAlign: 'c'
+      , shadeClose: true //开启遮罩关闭
+      , moveType: 1 //拖拽模式，0或者1
+      , content:
+         '<div style="padding: 10px;text-align:center; line-height: 5px; background-color: #393D49; color: #fff;"><h4>模式选择</h4>'
+        + '<button name="difficulty" onclick="changeDifficulty(this,[0,10])">随缘Play</button><br>'
+        + '<button name="difficulty" onclick="changeDifficulty(this,[0,0])">圣雄肝帝</button><br>'
+        + '<button name="difficulty" style="background-color:#1E9FFF" onclick="changeDifficulty(this,[0,5])">原汁原味</button><br>'
+        + '<button name="difficulty" onclick="changeDifficulty(this,[5,5])">作弊模式</button><br>'
+        + '<button name="difficulty" onclick="changeDifficulty(this,[2,7])">去除小瓜</button><br>'
+        + '<button name="difficulty" onclick="changeDifficulty(this,[9,9])">暴力吃瓜</button><br>'  
+        + '</div>'
+        + '<div style="padding: 10px;text-align:center; line-height: 5px; background-color: #393D49; color: #fff;"><h4>分数选择</h4>'
+        + '<button name="fanbei" onclick="multipleScore(this,2)">两倍暴击</button><br>'
+        + '<button name="fanbei" onclick="multipleScore(this,5)">五倍暴击</button><br>'
+        + '<button name="fanbei" onclick="multipleScore(this,10)">十倍暴击</button><br>'
+        + '<button name="fanbei" onclick="multipleScore(this,100)">百倍暴击</button><br>'
+        + '<button name="fanbei" onclick="multipleScore(this,1000)">千倍暴击</button><br>'
+        + '<button name="fanbei" onclick="multipleScore(this,10000)">万倍暴击</button><br>'
+        + '<button name="fanbei" onclick="multipleScore(this,100000)">十万伏特</button><br>'
+        + '</div>',
+
+
+      success: function (layero) {
+      }
+    });
 
         var loadintT = document.getElementById("loadingText");
         var loadintGif = document.getElementById("loadingImg")
